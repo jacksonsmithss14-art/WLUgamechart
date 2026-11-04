@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W&amp;L Football · Coaching Suite</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="utility-bar">
+      <div class="wrap">
+        <span>Washington and Lee University · Generals Football</span>
+        <span id="save-status" class="save-status" aria-live="polite"></span>
+      </div>
+    </div>
+    <div class="brand-bar">
+      <div class="wrap brand-row">
+        <a href="#/home" class="brand">
+          <span class="brand-mark">W&amp;L</span>
+          <span class="brand-text">
+            <span class="brand-title">Coaching Suite</span>
+            <span class="brand-sub">2026 Game Chart &amp; Analytics</span>
+          </span>
+        </a>
+        <nav class="main-nav" aria-label="Main">
+          <a href="#/home" data-nav="home">Home</a>
+          <a href="#/games" data-nav="games">Games</a>
+          <a href="#/trends" data-nav="trends">Trends</a>
+          <a href="#/playbook" data-nav="playbook">Playbook</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="wrap"></main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Washington and Lee University · Lexington, Virginia</span>
+      <span>Your work is saved in this browser automatically.</span>
+    </div>
+  </footer>
+
+  <dialog id="new-game-dialog" class="dialog" aria-labelledby="new-game-title">
+    <form method="dialog">
+      <h2 id="new-game-title">New game</h2>
+      <p class="small muted">Creates a blank game chart and its own analytics page.</p>
+      <label class="field">Opponent<input name="opponent" required placeholder="e.g. Washington College" autocomplete="off"></label>
+      <div class="row">
+        <label class="field">Date<input type="date" name="date"></label>
+        <label class="field">Site<select name="site"><option value="">—</option><option>Home</option><option>Away</option><option>Neutral</option></select></label>
+      </div>
+      <div class="row dialog-actions">
+        <button type="button" class="btn secondary" data-action="cancel">Cancel</button>
+        <button type="submit" class="btn">Create game</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="analytics-dialog" class="dialog dialog-wide" aria-labelledby="analytics-dialog-title">
+    <form method="dialog">
+      <h2 id="analytics-dialog-title">Edit analytics</h2>
+      <p class="small muted">Tick the analytics you want to see. Drag a row (or use the arrows) to change the order. Applies to every game and to Trends.</p>
+      <div class="row ae-bulk">
+        <button type="button" class="link-btn" data-ae="all">Show all</button>
+        <button type="button" class="link-btn" data-ae="none">Hide all</button>
+        <span class="spacer"></span>
+        <button type="button" class="link-btn" data-ae="reset">Reset to default</button>
+      </div>
+      <ol class="ae-list" id="ae-list"></ol>
+      <div class="row dialog-actions">
+        <button type="button" class="btn secondary" data-ae="cancel">Cancel</button>
+        <button type="submit" class="btn" autofocus>Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <script src="js/seed.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
